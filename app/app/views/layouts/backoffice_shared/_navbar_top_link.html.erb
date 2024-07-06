@@ -9,7 +9,11 @@
     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
     </li>
     <li class="divider"></li>
-    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+    <li>
+      <%= button_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn-no-underline" do %>
+        <i class="fa fa-sign-out fa-fw"></i>
+        Logout
+      <% end %>
     </li>
   </ul>
   <!-- /.dropdown-user -->
