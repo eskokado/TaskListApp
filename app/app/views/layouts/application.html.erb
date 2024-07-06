@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-  </head>
+  <%= stylesheet_link_tag "bootstrap", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "metisMenu", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "sb-admin-2", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "font-awesome", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "jquery", "data-turbo-track": "reload", type: "module" %>
+  <%= javascript_include_tag "bootstrap", "data-turbo-track": "reload", type: "module" %>
+  <%= javascript_include_tag "metisMenu", "data-turbo-track": "reload", type: "module" %>
+  <%= javascript_include_tag "sb-admin-2", "data-turbo-track": "reload", type: "module" %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <!-- Custom Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+<div id="wrapper">
+  <%= yield %>
+</div>
+</body>
 </html>
