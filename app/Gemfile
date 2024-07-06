@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.1'
 
+gem 'acts_as_tenant', '~> 1.0.1'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise'
