@@ -10,7 +10,7 @@
     </li>
     <li class="divider"></li>
     <li>
-      <%= button_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn-no-underline" do %>
+      <%= button_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "dropdown-logout" do %>
         <i class="fa fa-sign-out fa-fw"></i>
         Logout
       <% end %>
@@ -19,3 +19,24 @@
   <!-- /.dropdown-user -->
 </li>
 <!-- /.dropdown -->
+
+<style>
+    .dropdown-user .dropdown-logout {
+        width: 100%;
+        text-align: left;
+        clear: both;
+        font-weight: 400;
+        line-height: 1.42857143;
+        color: #333;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        text-decoration: none;
+    }
+
+    .dropdown-user .dropdown-logout:hover {
+        color: #262626;
+        text-decoration: none;
+        background-color: #f5f5f5;
+    }
+</style>
