@@ -7,9 +7,11 @@
         </div>
         <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), role: "form", html: { method: :post }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-            <div class="form-group">
+            <div class="form-group <%= 'has-error' if resource.errors[:email].present? %>">
               <%= f.email_field :email, class: 'form-control', placeholder: "e-mail", autofocus: true, autocomplete: "email" %>
+              <% if resource.errors[:email].present? %>
+                <span class="help-block"><%= resource.errors[:email].first %></span>
+              <% end %>
             </div>
             <!-- Change this to a button or input when using this as a form -->
             <div class="actions">

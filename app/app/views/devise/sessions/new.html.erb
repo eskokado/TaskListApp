@@ -7,7 +7,6 @@
         </div>
         <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), role: "form") do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
               <div class="form-group">
                 <%= f.email_field :email, class: 'form-control', placeholder: "e-mail", autofocus: true, autocomplete: "email" %>
               </div>
