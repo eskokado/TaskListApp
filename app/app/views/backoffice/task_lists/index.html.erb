@@ -1,0 +1,14 @@
+<h1>Task Lists</h1>
+
+<%= link_to 'New Task List', new_backoffice_task_list_path %>
+
+<ul>
+  <% @task_lists.each do |task_list| %>
+    <li>
+      <%= task_list.name %>
+      <%= link_to 'Show', backoffice_task_list_path(task_list) %>
+      <%= link_to 'Edit', edit_backoffice_task_list_path(task_list) %>
+      <%= link_to 'Destroy', backoffice_task_list_path(task_list), method: :delete, data: { confirm: "Deseja deletar a task #{task_list.id}?" } %>
+    </li>
+  <% end %>
+</ul>

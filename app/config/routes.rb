@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :backoffice do
     get 'dashboard/index'
+
+    resources :task_lists do
+      resources :tasks, only: [:create, :update, :destroy]
+    end
   end
+
   root 'backoffice/dashboard#index'
 
   if Rails.env.development?
