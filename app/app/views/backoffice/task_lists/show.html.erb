@@ -1,14 +1,44 @@
-<h1><%= @task_list.name %></h1>
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <h1 class="h3"><%= @task_list.name %></h1>
+      <div class="d-flex align-content-center justify-content-between">
+        <%= link_to 'Editar Lista', edit_backoffice_task_list_path(@task_list), class: "btn btn-warning btn-sm" %>
+        <%= link_to 'Voltar', backoffice_task_lists_path, class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>
 
-<h2>Tasks</h2>
-<ul>
-  <% @task_list.tasks.each do |task| %>
-    <li>
-      <%= task.name %> - <%= task.status %>
-      <%= link_to 'Delete', backoffice_task_list_task_path(@task_list, task), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Edit Task List', edit_backoffice_task_list_path(@task_list) %>
-<%= link_to 'Back', backoffice_task_lists_path %>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="h4">Tarefas (<%= @task_list.tasks.pending.count %> pendentes) </h2>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @task_list.tasks.each do |task| %>
+          <tr>
+            <td>
+              <%= link_to task.name, backoffice_task_list_task_path(@task_list, task) %>
+            </td>
+            <td>
+              <%= task.status %>
+            </td>
+            <td>
+              <%= link_to 'Editar', '#', class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Deletar', '#', method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+              <%#= link_to 'Editar', edit_backoffice_task_list_task_path(@task_list, task), class: "btn btn-primary btn-sm" %>
+              <%#= link_to 'Deletar', backoffice_task_list_task_path(@task_list, task), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
