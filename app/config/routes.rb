@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:edit, :update]
   end
 
-  root 'backoffice/dashboard#index'
+  root 'backoffice/task_lists#index'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
