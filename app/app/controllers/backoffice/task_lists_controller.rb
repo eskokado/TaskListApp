@@ -9,7 +9,7 @@ module Backoffice
     before_action :set_tenant
 
     def index
-      @task_lists = TaskList.all
+      @task_lists = TaskList.includes(:tasks).page(params[:page]).per(2)
     end
 
     def show
