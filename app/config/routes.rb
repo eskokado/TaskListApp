@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :task_lists do
       resources :tasks, only: [:create, :update, :destroy]
     end
+
+    resources :subscriptions, only: [:edit, :update]
   end
 
   root 'backoffice/dashboard#index'
