@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.input :name, label: "Task List Name" %>
+  <div class="form-group">
+    <%= form.label :name, "Task List Name", class: "d-block" %>
+    <%= form.input :name, label: false, input_html: { class: "form-control", style: "width: 100%;" } %>
   </div>
 
   <h2>Tasks</h2>
-  <div id="tasks" data-task-list-target="tasks">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="tasks" data-task-list-target="tasks">
     <%= form.simple_fields_for :tasks do |task_form| %>
       <%= render 'task_fields', form: task_form %>
     <% end %>
-  </div>
+    </tbody>
+  </table>
 
   <div class="mt-3">
     <%= button_tag "Add Task", type: "button", class: "btn btn-primary", data: { action: "task-list#addTask" } %>
-  </div>
-
-  <div class="actions">
-    <%= form.button :submit, "Save Task List" %>
+    <%= form.button :submit, "Save Task List", class: "btn btn-primary" %>
+    <%= link_to 'Back', backoffice_task_lists_path, class: "btn btn-info" %>
   </div>
 
   <template data-task-list-target="template">

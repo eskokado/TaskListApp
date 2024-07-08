@@ -1,5 +1,5 @@
 <!-- app/views/backoffice/subscriptions/_form.html.erb -->
-<%= simple_form_for @subscription, url: backoffice_subscription_path(@subscription) do |form| %>
+<%= simple_form_for @subscription, url: backoffice_subscription_path(@subscription), html: { class: "mt-5" } do |form| %>
   <%= hidden_field_tag :_method, 'patch' %>
   <% if @subscription.errors.any? %>
     <div id="error_explanation">
@@ -12,34 +12,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :plan %>
-    <%= form.select :plan, Subscription.plans.keys.map { |plan| [plan.humanize, plan] }, {}, { onchange: 'toggleCreditCardFields()' } %>
+    <%= form.select :plan, Subscription.plans.keys.map { |plan| [plan.humanize, plan] }, {}, { class: 'form-control', onchange: 'toggleCreditCardFields()' } %>
   </div>
 
   <div id="credit-card-fields" style="display: <%= @subscription.premium? ? 'block' : 'none' %>;">
     <h3>Credit Card Information</h3>
     <%= form.fields_for :credit_card do |cc_form| %>
-      <div>
-        <%= cc_form.label :card_number, "Card Number" %>
-        <%= cc_form.text_field :card_number %>
+      <div class="form-group">
+        <%= cc_form.label :card_number, "Card Number", class: "d-block" %>
+        <%= cc_form.text_field :card_number, class: "form-control" %>
       </div>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Save", class: "btn btn-primary" %>
   </div>
 
   <script>
       function toggleCreditCardFields() {
           var plan = document.querySelector("select[name='subscription[plan]']").value;
           var ccFields = document.getElementById("credit-card-fields");
-          if (plan === "premium") {
-              ccFields.style.display = "block";
-          } else {
-              ccFields.style.display = "none";
-          }
+          ccFields.style.display = plan === "premium" ? "block" : "none";
       }
   </script>
 <% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'dashboard/index'
 
     resources :task_lists do
-      resources :tasks, only: [:create, :update, :destroy]
+      resources :tasks
     end
 
     resources :subscriptions, only: [:edit, :update]

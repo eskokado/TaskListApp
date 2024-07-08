@@ -24,16 +24,14 @@
         <% @task_list.tasks.each do |task| %>
           <tr>
             <td>
-              <%= link_to task.name, backoffice_task_list_task_path(@task_list, task) %>
+              <%= task.name %>
             </td>
             <td>
               <%= task.status %>
             </td>
             <td>
-              <%= link_to 'Editar', '#', class: "btn btn-primary btn-sm" %>
-              <%= link_to 'Deletar', '#', method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
-              <%#= link_to 'Editar', edit_backoffice_task_list_task_path(@task_list, task), class: "btn btn-primary btn-sm" %>
-              <%#= link_to 'Deletar', backoffice_task_list_task_path(@task_list, task), method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+              <%= link_to 'Editar', backoffice_task_list_task_path(@task_list, task), class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Deletar', backoffice_task_list_task_path(@task_list, task), method: :delete, data: { confirm: "Tem certeza de deletar tarefa \"#{task.name}?\"" }, class: "btn btn-danger btn-sm" %>
             </td>
           </tr>
         <% end %>
