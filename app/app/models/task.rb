@@ -5,4 +5,6 @@ class Task < ApplicationRecord
     pending: 'pending',
     completed: 'completed'
   }
+
+  scope :pending, -> { where(status: 'pending') }
 end

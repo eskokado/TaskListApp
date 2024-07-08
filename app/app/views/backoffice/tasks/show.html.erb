@@ -1,0 +1,8 @@
+<div class="container mt-5">
+  <h1 class="h3"><%= @task_list.name %> - <%= @task.name %></h1>
+  <p><strong>Status:</strong> <%= @task.status %></p>
+  <div>
+    <%= link_to 'Edit', edit_backoffice_task_list_task_path(@task_list, @task), class: "btn btn-warning" %>
+    <%= link_to 'Back', backoffice_task_list_tasks_path(@task_list), class: "btn btn-secondary" %>
+  </div>
+</div>

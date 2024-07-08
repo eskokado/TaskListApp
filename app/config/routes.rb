@@ -6,13 +6,13 @@ Rails.application.routes.draw do
     get 'dashboard/index'
 
     resources :task_lists do
-      resources :tasks, only: [:create, :update, :destroy]
+      resources :tasks
     end
 
     resources :subscriptions, only: [:edit, :update]
   end
 
-  root 'backoffice/dashboard#index'
+  root 'backoffice/task_lists#index'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
