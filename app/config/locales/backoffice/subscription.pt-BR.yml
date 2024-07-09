@@ -1,0 +1,11 @@
+pt-BR:
+  backoffice:
+    subscriptions:
+      form:
+        save: "Cadastrar"
+        back: "Voltar"
+        plan: "Plano"
+        card_number: "Número do cartão"
+        placeholder:
+          details:
+            card_number: "1234 12345 1234 12345"

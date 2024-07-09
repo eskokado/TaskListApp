@@ -4,7 +4,7 @@
   <td class="col-md-3"><%= form.input :status, collection: Task.statuses.keys.map { |w| [w.humanize, w] }, include_blank: false, label: false, input_html: { class: "form-control", style: "width: 100%;" } %></td>
   <td class="col-md-2">
     <% if form.object.new_record? %>
-      <%= link_to "Remove task", "#", input_html: { class: "btn btn-danger ", style: "width: 100%;" }, class: "btn btn-danger", data: { action: "task-list#removeTask" } %>
+      <%= link_to t('backoffice.task_lists.task_fields.remove'), "#", input_html: { class: "btn btn-danger ", style: "width: 100%;" }, class: "btn btn-danger", data: { action: "task-list#removeTask" } %>
     <% end %>
   </td>
 </tr>

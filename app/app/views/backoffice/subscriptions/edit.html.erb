@@ -18,10 +18,9 @@
   </div>
 
   <div id="credit-card-fields" style="display: <%= @subscription.premium? ? 'block' : 'none' %>;">
-    <h3>Credit Card Information</h3>
     <%= form.fields_for :credit_card do |cc_form| %>
       <div class="form-group">
-        <%= cc_form.label :card_number, "Card Number", class: "d-block" %>
+        <%= cc_form.label :card_number, class: "d-block" %>
         <%= cc_form.text_field :card_number, class: "form-control" %>
       </div>
     <% end %>

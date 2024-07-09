@@ -1,0 +1,23 @@
+pt-BR:
+  backoffice:
+    tasks:
+      show:
+        edit: "Editar"
+        delete: "Excluir"
+        back: "Voltar"
+        title: "Detalhes da Tarefa"
+        name: "Nome"
+        status: "Situação"
+      form:
+        edit: "Editar Tarefa de"
+        new: "Nova Tarefa de"
+        save: "Cadastrar"
+        back: "Voltar"
+        name: "Nome"
+        status: "Situação"
+        pending: "Pendente"
+        completed: "Completado"
+        placeholder:
+          details:
+            name: "Entre com o nome da tarefa"
+            status: "Selecione um status"

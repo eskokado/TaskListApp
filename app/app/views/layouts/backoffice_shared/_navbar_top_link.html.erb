@@ -6,14 +6,14 @@
   <ul class="dropdown-menu dropdown-user">
     <li>
       <%= link_to edit_backoffice_subscription_path(current_user)  do %>
-        <i class="fa fa-credit-card fa-fw"></i> Assinatura
+        <i class="fa fa-credit-card fa-fw"></i> <%= t('layouts.backoffice.subscriptions') %>
       <% end %>
     </li>
     <li class="divider"></li>
     <li>
-      <%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Tem certeza que deseja sair?' } do %>
+      <%= link_to destroy_user_session_path, method: :delete, data: { confirm: t('layouts.backoffice.delete.message') } do %>
         <i class="fa fa-sign-out fa-fw"></i>
-        Logout
+        <%= t('layouts.backoffice.logout') %>
       <% end %>
     </li>
   </ul>

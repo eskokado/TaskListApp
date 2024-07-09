@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        subscription:
+          attributes:
+            plan:
+              blank: "Plano não pode ficar em branco"
+            card_number:
+              blank: "Número do cartão não pode ficar em branco"
+    models:
+      subscription:
+        one: "Assinatura"
+        other: "Assinaturas"
+    attributes:
+      subscription:
+        plan: "Plano"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"

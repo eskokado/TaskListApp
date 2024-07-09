@@ -3,10 +3,6 @@ module Backoffice
     before_action :set_task_list
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-    def index
-      @tasks = @task_list.tasks
-    end
-
     def show
     end
 
@@ -36,7 +32,7 @@ module Backoffice
 
     def destroy
       @task.destroy
-      redirect_to backoffice_task_list_tasks_path(@task_list), notice: 'Task was successfully deleted.'
+      redirect_to backoffice_task_list_path(@task_list), notice: 'Task was successfully deleted.'
     end
 
     private

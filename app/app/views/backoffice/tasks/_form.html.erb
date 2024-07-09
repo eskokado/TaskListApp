@@ -1,16 +1,4 @@
 <%= form_with(model: [@task_list, @task], url: @task.new_record? ? backoffice_task_list_tasks_path(@task_list) : backoffice_task_list_task_path(@task_list, @task), local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-        <% @task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
@@ -20,15 +8,16 @@
     <%= form.label :status %>
     <div class="form-check">
       <%= form.radio_button :status, 'pending', class: 'form-check-input' %>
-      <%= form.label :status_pending, 'Pending', class: 'form-check-label' %>
+      <%= form.label :status_pending, t('backoffice.tasks.form.pending'), class: 'form-check-label' %>
     </div>
     <div class="form-check">
       <%= form.radio_button :status, 'completed', class: 'form-check-input' %>
-      <%= form.label :status_completed, 'Completed', class: 'form-check-label' %>
+      <%= form.label :status_completed, t('backoffice.tasks.form.completed'), class: 'form-check-label' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t('backoffice.tasks.form.back'), backoffice_task_list_path(@task_list), class: "btn btn-info mt-3" %>
   </div>
 <% end %>
