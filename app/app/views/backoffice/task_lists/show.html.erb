@@ -3,8 +3,8 @@
     <div class="col-12 d-flex justify-content-between align-items-center">
       <h1 class="h3"><%= @task_list.name %></h1>
       <div class="d-flex align-content-center justify-content-between">
-        <%= link_to 'Editar Lista', edit_backoffice_task_list_path(@task_list), class: "btn btn-warning btn-sm" %>
-        <%= link_to 'Voltar', backoffice_task_lists_path, class: "btn btn-info btn-sm" %>
+        <%= link_to t('backoffice.task_lists.show.edit_list'), edit_backoffice_task_list_path(@task_list), class: "btn btn-warning btn-sm" %>
+        <%= link_to t('backoffice.task_lists.show.back'), backoffice_task_lists_path, class: "btn btn-info btn-sm" %>
       </div>
     </div>
   </div>
@@ -39,4 +39,5 @@
       </table>
     </div>
   </div>
+  <%= link_to t('backoffice.task_lists.show.new'), new_backoffice_task_list_task_path(@task_list), class: "btn btn-primary btn-sm" %>
 </div>
