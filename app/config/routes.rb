@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     get 'dashboard/index'
 
     resources :task_lists do
-      resources :tasks
+      resources :tasks do
+        member do
+          patch :mark_as_done
+        end
+      end
     end
 
     resources :subscriptions, only: [:edit, :update]
