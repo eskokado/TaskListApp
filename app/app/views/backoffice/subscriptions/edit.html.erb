@@ -1,17 +1,6 @@
 <!-- app/views/backoffice/subscriptions/_form.html.erb -->
 <%= simple_form_for @subscription, url: backoffice_subscription_path(@subscription), html: { class: "mt-5" } do |form| %>
   <%= hidden_field_tag :_method, 'patch' %>
-  <% if @subscription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
-      <ul>
-        <% @subscription.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
     <%= form.label :plan %>
     <%= form.select :plan, Subscription.plans.keys.map { |plan| [plan.humanize, plan] }, {}, { class: 'form-control', onchange: 'toggleCreditCardFields()' } %>
@@ -19,9 +8,12 @@
 
   <div id="credit-card-fields" style="display: <%= @subscription.premium? ? 'block' : 'none' %>;">
     <%= form.fields_for :credit_card do |cc_form| %>
-      <div class="form-group">
+      <div class="form-group <%= 'has-error' if cc_form.object.errors[:card_number].present? %>">
         <%= cc_form.label :card_number, class: "d-block" %>
         <%= cc_form.text_field :card_number, class: "form-control" %>
+        <% if cc_form.object.errors[:card_number].present? %>
+          <span class="help-block"><%= cc_form.object.errors[:card_number].first %></span>
+        <% end %>
       </div>
     <% end %>
   </div>
