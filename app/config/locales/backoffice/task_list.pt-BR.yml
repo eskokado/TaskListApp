@@ -21,6 +21,8 @@ pt-BR:
         back: "Voltar"
         title: "Detalhes da Lista de Tarefa"
         name: "Nome"
+        status: "Executado?"
+        actions: "Ações"
         confirm_remove: "Tem certeza de remover tarefa?"
       form:
         new: "Nova Lista de Tarefa"

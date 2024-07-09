@@ -43,10 +43,34 @@
 
       <!-- /#page-wrapper -->
       <div id="page-wrapper">
+        <% if notice %>
+          <div class="alert alert-info show" role="alert">
+            <span><%= notice %></span>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger show" role="alert">
+            <span><%= alert %></span>
+          </div>
+        <% end %>
         <br/>
         <br/>
         <%= yield %>
       </div>
     </div>
+
+
+    <script>
+        // Hide alerts after 30 seconds
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(() => {
+                let alerts = document.querySelectorAll('.alert');
+                alerts.forEach((alert) => {
+                    alert.classList.remove('show');
+                    alert.classList.add('hide');
+                });
+            }, 3000);
+        });
+    </script>
   </body>
 </html>
