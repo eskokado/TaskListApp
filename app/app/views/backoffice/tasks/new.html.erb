@@ -1,7 +1,6 @@
 <div class="container mt-5">
-  <h1 class="h3">New Task for <%= @task_list.name %></h1>
+  <h1 class="h3"><%= t('backoffice.tasks.form.new') %> <%= @task_list.name %></h1>
 
   <%= render 'form', task: @task %>
 
-  <%= link_to 'Back to Tasks', backoffice_task_list_tasks_path(@task_list), class: "btn btn-secondary mt-3" %>
 </div>

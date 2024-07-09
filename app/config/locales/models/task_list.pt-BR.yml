@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        task_list:
+          attributes:
+            name:
+              blank: "Nome nao pode ficar em branco"
+    models:
+      task_list:
+        one: "Lista de Tarefa"
+        other: "Listas de Tarefas"
+    attributes:
+      task_list:
+        name: "Nome"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
