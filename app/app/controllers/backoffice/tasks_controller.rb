@@ -1,7 +1,13 @@
 module Backoffice
   class TasksController < BackofficeController
     before_action :set_task_list
-    before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done, :purge_attachment]
+    before_action :set_task, only: [
+      :show, :edit, :update, :destroy, :mark_as_done, :purge_attachment
+    ]
+    before_action :authorize_user!, only: [
+      :new, :create, :edit, :update, :destroy, :mark_as_done, :purge_attachment
+    ]
+
     def show
     end
 
@@ -69,6 +75,12 @@ module Backoffice
 
     def task_params
       params.require(:task).permit(:name, :status, files: [])
+    end
+
+    def authorize_user!
+      unless @task_list.user == current_user
+        redirect_to backoffice_task_list_path(@task_list), alert: t('.alert.access.denied')
+      end
     end
   end
 end
