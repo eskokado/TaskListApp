@@ -3,8 +3,6 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  delete 'attachments/:id/purge', to: 'attachments#purge', as: 'purge_attachment'
-
   namespace :backoffice do
     get 'dashboard/index'
 
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
       resources :tasks do
         member do
           patch :mark_as_done
+          delete :purge_attachment
         end
       end
     end
