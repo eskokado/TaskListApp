@@ -1,0 +1,5 @@
+pt-BR:
+  backoffice:
+    subscriptions:
+      create: 'Assinatura cadastrada com sucesso.'
+      update: 'Assinatura atualizada com sucesso.'

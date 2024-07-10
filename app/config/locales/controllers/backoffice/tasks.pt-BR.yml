@@ -11,4 +11,4 @@ pt-BR:
           success: 'Arquivo removido com sucesso.'
       alert:
         access:
-          danied: 'Não tem permissão para processar.'
+          denied: 'Não tem permissão para processar.'
