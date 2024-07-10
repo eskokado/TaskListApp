@@ -1,0 +1,9 @@
+postgres://dio_gft_2024_user:MIA7NlE7NeNFSXhhjA8kwkQbDr3mwtrR@dpg-cpic8pi1hbls73bfqsfg-a/dio_gft_2024
+
+postgres://dio_gft_2024_user:MIA7NlE7NeNFSXhhjA8kwkQbDr3mwtrR@dpg-cpic8pi1hbls73bfqsfg-a.oregon-postgres.render.com/dio_gft_2024
+
+api-key render
+rnd_o8lSSxk1c3MQOrsoBe81I2Tk3nOI
+
+Hostname
+dpg-cpip9aa1hbls73bkoja0-a
