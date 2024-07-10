@@ -9,3 +9,6 @@ pt-BR:
       notice:
         remove:
           success: 'Arquivo removido com sucesso.'
+      alert:
+        access:
+          danied: 'Não tem permissão para processar.'
