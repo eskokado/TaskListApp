@@ -1,6 +1,6 @@
 <div class="row mb-4">
   <div class="col-12 d-flex justify-content-between align-items-center">
-    <h1 class="h3"><%= @task_list.name %></h1>
+    <h1><%= @task_list.name %></h1>
     <div class="d-flex align-content-center justify-content-between">
       <%= link_to t('backoffice.task_lists.show.edit_list'), edit_backoffice_task_list_path(@task_list), class: "btn btn-warning btn-sm" %>
       <%= link_to t('backoffice.task_lists.show.back'), backoffice_task_lists_path, class: "btn btn-info btn-sm" %>
@@ -8,7 +8,8 @@
   </div>
 </div>
 
-<h2 class="h4">Tarefas (<%= @task_list.tasks.pending.count %> pendentes) </h2>
+<h2>Tarefas (<%= @task_list.tasks.pending.count %> pendentes) </h2>
+<h3>Compartilhado ? <%= check_box_tag 'task_list[shared]', '1', @task_list.shared, disabled: true %></h3>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -24,11 +25,17 @@
       <td>
         <%= link_to task.name, backoffice_task_list_task_path(@task_list, task) %>
       </td>
-      <td>
-        <%= form_with url: mark_as_done_backoffice_task_list_task_path(@task_list, task), method: :patch, local: true, class: 'text-center' do %>
-          <%= check_box_tag 'status', task.completed? ? 'pending' : 'completed', task.completed?, onchange: 'this.form.submit();' %>
-        <% end %>
-      </td>
+      <% if @task_list.user == current_user %>
+        <td>
+          <%= form_with url: mark_as_done_backoffice_task_list_task_path(@task_list, task), method: :patch, local: true, class: 'text-center' do %>
+            <%= check_box_tag 'status', task.completed? ? 'pending' : 'completed', task.completed?, onchange: 'this.form.submit();' %>
+          <% end %>
+        </td>
+      <% else %>
+        <td>
+          <%= check_box_tag 'status', task.completed? ? 'pending' : 'completed', task.completed?, disabled: true %>
+        </td>
+      <% end %>
       <td class="text-center">
         <% if task.files.attached? %>
           <%= task.files.count %> <%= t('backoffice.task_lists.show.files_saved') %>
@@ -36,10 +43,14 @@
           <%= t('backoffice.task_lists.show.no_files') %>
         <% end %>
       </td>
-      <td class="text-center">
-        <%= link_to t('backoffice.task_lists.show.edit'), edit_backoffice_task_list_task_path(@task_list, task), class: "btn btn-warning btn-sm" %>
-        <%= link_to t('backoffice.task_lists.show.remove'), backoffice_task_list_task_path(@task_list, task), method: :delete, data: { confirm: "#{t('backoffice.task_lists.show.confirm_remove')} (#{task.name})" }, class: "btn btn-danger btn-sm" %>
-      </td>
+      <% if @task_list.user == current_user %>
+        <td class="text-center">
+          <%= link_to t('backoffice.task_lists.show.edit'), edit_backoffice_task_list_task_path(@task_list, task), class: "btn btn-warning btn-sm" %>
+          <%= link_to t('backoffice.task_lists.show.remove'), backoffice_task_list_task_path(@task_list, task), method: :delete, data: { confirm: "#{t('backoffice.task_lists.show.confirm_remove')} (#{task.name})" }, class: "btn btn-danger btn-sm" %>
+        </td>
+      <% else %>
+        <td></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
