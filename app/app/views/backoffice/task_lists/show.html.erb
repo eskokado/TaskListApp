@@ -14,6 +14,7 @@
   <tr>
     <th><%= t('backoffice.task_lists.show.name') %></th>
     <th class="text-center col-md-2"><%= t('backoffice.task_lists.show.status') %></th>
+    <th class="text-center col-md-2"><%= t('backoffice.task_lists.show.files') %></th>
     <th class="text-center col-md-3"><%= t('backoffice.task_lists.show.actions') %></th>
   </tr>
   </thead>
@@ -26,6 +27,13 @@
       <td>
         <%= form_with url: mark_as_done_backoffice_task_list_task_path(@task_list, task), method: :patch, local: true, class: 'text-center' do %>
           <%= check_box_tag 'status', task.completed? ? 'pending' : 'completed', task.completed?, onchange: 'this.form.submit();' %>
+        <% end %>
+      </td>
+      <td class="text-center">
+        <% if task.files.attached? %>
+          <%= task.files.count %> <%= t('backoffice.task_lists.show.files_saved') %>
+        <% else %>
+          <%= t('backoffice.task_lists.show.no_files') %>
         <% end %>
       </td>
       <td class="text-center">

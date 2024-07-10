@@ -1,8 +1,7 @@
 module Backoffice
   class TasksController < BackofficeController
     before_action :set_task_list
-    before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done]
-
+    before_action :set_task, only: [:show, :edit, :update, :destroy, :mark_as_done, :purge_attachment]
     def show
     end
 
@@ -23,7 +22,8 @@ module Backoffice
     end
 
     def update
-      if @task.update(task_params)
+      if @task.update(task_params.except(:files))
+        @task.files.attach(task_params[:files]) if task_params[:files].present?
         redirect_to backoffice_task_list_task_path(@task_list, @task), notice: t('.update')
       else
         render :edit
@@ -44,6 +44,19 @@ module Backoffice
       end
     end
 
+    def purge_attachment
+      attachment = ActiveStorage::Attachment.find(params[:attachment_id])
+      attachment.purge
+
+      referer_path = URI(request.referer).path
+
+      if referer_path.include?("edit")
+        redirect_to edit_backoffice_task_list_task_path(@task_list, @task), notice: t('.notice.remove.success')
+      else
+        redirect_to backoffice_task_list_task_path(@task_list, @task), notice: t('.notice.remove.success')
+      end
+    end
+
     private
 
     def set_task_list
@@ -51,11 +64,11 @@ module Backoffice
     end
 
     def set_task
-      @task = @task_list.tasks.find(params[:id])
+      @task = Task.find(params[:id])
     end
 
     def task_params
-      params.require(:task).permit(:name, :status)
+      params.require(:task).permit(:name, :status, files: [])
     end
   end
 end

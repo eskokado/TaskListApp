@@ -1,0 +1,27 @@
+<% if @task.files.attached? %>
+  <div id="carouselTaskFiles<%= @task.id %>" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="row">
+        <% @task.files.each_with_index do |file, index| %>
+          <div class="col-sm-2 position-relative">
+            <div class="carousel-item <%= 'active' if index.zero? %>">
+              <% if file.content_type.start_with?('image/') %>
+                <%= image_tag file, style: 'height: 150px; width: 150px; object-fit: block;', class: 'd-block mx-auto' %>
+              <% else %>
+                <%= image_tag 'pdf.png', alt: 'PDF Icon', style: 'height: 150px; width: 150px; object-fit: block;', class: 'pdf-icon' %>
+              <% end %>
+              <% if file.persisted? %>
+                <div class="d-flex">
+                  <%= link_to 'X', purge_attachment_backoffice_task_list_task_path(@task_list, @task, attachment_id: file.id), method: :delete, class: "btn btn-danger btn-sm col-sm-3", data: { confirm: t('backoffice.tasks.form.confirm.file.remove') } %>
+                  <%= link_to file.filename, rails_blob_path(file, disposition: "attachment"), class: "btn btn-info btn-sm col-sm-9" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p><%= t('backoffice.tasks.show.no_files') %></p>
+<% end %>

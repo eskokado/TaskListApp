@@ -6,3 +6,6 @@ pt-BR:
       destroy: 'Tarefa apagada com sucesso.'
       status_updated: 'Situação da tarefa alterada com sucesso.'
       status_failed: 'Situação da tarefa não foi alterada com sucesso.'
+      notice:
+        remove:
+          success: 'Arquivo removido com sucesso.'
