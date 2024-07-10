@@ -8,6 +8,7 @@ pt-BR:
         table:
           name: "Nome"
           count_pending: "Tarefas Pendentes"
+          shared: "Compartilhado?"
           actions:
             title: "Ações"
             show: "Visualizar"
@@ -22,6 +23,7 @@ pt-BR:
         title: "Detalhes da Lista de Tarefa"
         name: "Nome"
         status: "Executado?"
+        shared: "Compartilhado"
         actions: "Ações"
         confirm_remove: "Tem certeza de remover tarefa?"
       form:
@@ -33,6 +35,7 @@ pt-BR:
         title: 'Tarefas'
         name: "Nome da tarefa"
         status: "Situação"
+        shared: "Compartilhado"
         actions: "Ações"
         placeholder:
           details:

@@ -1,0 +1,9 @@
+pt-BR:
+  backoffice:
+    task_lists:
+      create: 'Lista de Tarefa cadastrada com sucesso.'
+      update: 'Lista de Tarefa atualizada com sucesso.'
+      destroy: 'Lista de Tarefa apagada com sucesso.'
+      alert:
+        access:
+          danied: 'Não tem permissão para processar.'
