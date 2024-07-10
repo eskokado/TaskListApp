@@ -1,0 +1,22 @@
+<!-- /.dropdown -->
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+  </a>
+  <ul class="dropdown-menu dropdown-user">
+    <li>
+      <%= link_to edit_backoffice_subscription_path(current_user)  do %>
+        <i class="fa fa-credit-card fa-fw"></i> <%= t('layouts.backoffice.subscriptions') %>
+      <% end %>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <%= link_to destroy_user_session_path, method: :delete, data: { confirm: t('layouts.backoffice.delete.message') } do %>
+        <i class="fa fa-sign-out fa-fw"></i>
+        <%= t('layouts.backoffice.logout') %>
+      <% end %>
+    </li>
+  </ul>
+  <!-- /.dropdown-user -->
+</li>
+<!-- /.dropdown -->

@@ -94,7 +94,7 @@ app/app.iml
 
 /public/packs
 /public/packs-test
-/public/sb-admin-pro
+/public/sb-admin
 /node_modules
 /yarn-error.log
 yarn-debug.log*

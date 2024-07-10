@@ -1,0 +1,44 @@
+pt-BR:
+  backoffice:
+    task_lists:
+      index:
+        title: "Listas de Tarefas"
+        new: "Nova lista"
+        confirm_remove: "Deseja remover a lista de tarefa?"
+        table:
+          name: "Nome"
+          count_pending: "Tarefas Pendentes"
+          shared: "Compartilhado?"
+          actions:
+            title: "Ações"
+            show: "Visualizar"
+            edit: "Editar"
+            remove: "Remover"
+      show:
+        edit_list: "Editar Lista"
+        new: "Nova tarefa"
+        remove: "Remover"
+        edit: "Editar"
+        back: "Voltar"
+        title: "Detalhes da Lista de Tarefa"
+        name: "Nome"
+        status: "Executado?"
+        shared: "Compartilhado"
+        actions: "Ações"
+        confirm_remove: "Tem certeza de remover tarefa?"
+      form:
+        new: "Nova Lista de Tarefa"
+        edit: "Editar Lista de Tarefa"
+        save: "Cadastrar"
+        back: "voltar"
+        add: "Adicionar tarefa"
+        title: 'Tarefas'
+        name: "Nome da tarefa"
+        status: "Situação"
+        shared: "Compartilhado"
+        actions: "Ações"
+        placeholder:
+          details:
+            name: "Entre com o nome da lista de tarefa"
+      task_fields:
+        remove: "Remover tarefa"

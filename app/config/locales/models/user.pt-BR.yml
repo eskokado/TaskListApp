@@ -1,0 +1,28 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: 'Username nao pode ficar em branco'
+            email:
+              blank: 'E-mail nao pode ficar em branco'
+            password:
+              blank: 'Senha nao pode ficar em branco'
+              too_short: 'Senha deve ter no mínimo 6 caracteres'
+            password_confirmation:
+              blank: 'Confirmação de Senha nao pode ficar em branco'
+              confirmation: 'Confirmação de Senha nao pode ser diferente da senha'
+    models:
+      user:
+        one: 'Usuã́rio'
+        other: 'Usuários'
+    attributes:
+      user:
+        username: 'Username'
+        email: 'E-mail'
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
+        created_at: 'Criado em'
+        updated_at: 'Atualizado em'

@@ -1,0 +1,12 @@
+pt-BR:
+  layouts:
+    backoffice:
+      dashboard: "Painel"
+      tasks: "Tarefas"
+      subscriptions: "Assinaturas"
+      login: "Entrar"
+      logout: "Sair"
+      signup: "Cadastrar"
+      tutorial: "Tutorial"
+      delete:
+        message: 'Tem certeza que deseja sair?'

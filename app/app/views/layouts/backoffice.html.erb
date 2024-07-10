@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "bootstrap", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "metisMenu", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "sb-admin-2", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "font-awesome", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "jquery", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "bootstrap", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "metisMenu", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "sb-admin-2", "data-turbo-track": "reload", type: "module" %>
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <!-- /.navbar-header -->
+        <div class="navbar-header">
+          <%= render partial: "layouts/backoffice_shared/navbar_header" %>
+        </div>
+
+        <!-- /.navbar-top-links -->
+        <ul class="nav navbar-top-links navbar-right">
+          <%= render partial: "layouts/backoffice_shared/navbar_top_link" %>
+        </ul>
+
+        <!-- /.navbar-static-side -->
+        <div class="navbar-default sidebar" role="navigation">
+          <%= render partial: "layouts/backoffice_shared/navbar_static_side" %>
+        </div>
+      </nav>
+
+      <!-- /#page-wrapper -->
+      <div id="page-wrapper">
+        <% if notice %>
+          <div class="alert alert-info show" role="alert">
+            <span><%= notice %></span>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger show" role="alert">
+            <span><%= alert %></span>
+          </div>
+        <% end %>
+        <br/>
+        <br/>
+        <%= yield %>
+      </div>
+    </div>
+
+
+    <script>
+        // Hide alerts after 30 seconds
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(() => {
+                let alerts = document.querySelectorAll('.alert');
+                alerts.forEach((alert) => {
+                    alert.classList.remove('show');
+                    alert.classList.add('hide');
+                });
+            }, 3000);
+        });
+    </script>
+  </body>
+</html>

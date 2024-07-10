@@ -1,10 +1,26 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  namespace :backoffice do
+    get 'dashboard/index'
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+    resources :task_lists do
+      resources :tasks do
+        member do
+          patch :mark_as_done
+          delete :purge_attachment
+        end
+      end
+    end
+
+    resources :subscriptions, only: [:edit, :update]
+  end
+
+  root 'backoffice/task_lists#index'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

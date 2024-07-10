@@ -1,0 +1,14 @@
+pt-BR:
+  backoffice:
+    tasks:
+      create: 'Tarefa cadastrada com sucesso.'
+      update: 'Tarefa atualizada com sucesso.'
+      destroy: 'Tarefa apagada com sucesso.'
+      status_updated: 'Situação da tarefa alterada com sucesso.'
+      status_failed: 'Situação da tarefa não foi alterada com sucesso.'
+      notice:
+        remove:
+          success: 'Arquivo removido com sucesso.'
+      alert:
+        access:
+          danied: 'Não tem permissão para processar.'

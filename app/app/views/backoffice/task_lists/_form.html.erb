@@ -1,0 +1,43 @@
+<!-- app/views/backoffice/task_lists/_form.html.erb -->
+<%= simple_form_for @task_list, url: @task_list.new_record? ? backoffice_task_lists_path : backoffice_task_list_path(@task_list), html: { data: { controller: "task-list" } } do |form| %>
+  <div class="form-group <%= 'has-error' if @task_list.errors[:name].present? %>">
+    <%= form.label :name, class: "d-block" %>
+    <%= form.input :name, label: false, input_html: { class: "form-control", style: "width: 100%;" } %>
+  </div>
+
+  <div class="form-group>">
+    <%= form.label :shared, class: "d-block" %>
+    <%= form.check_box :shared %>
+  </div>
+
+  <h2><%= t('backoffice.task_lists.form.title') %></h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th><%= t('backoffice.task_lists.form.name') %></th>
+      <th><%= t('backoffice.task_lists.form.status') %></th>
+      <th><%= t('backoffice.task_lists.form.actions') %></th>
+    </tr>
+    </thead>
+    <tbody id="tasks" data-task-list-target="tasks">
+    <%= form.simple_fields_for :tasks do |task_form| %>
+      <%= render 'task_fields', form: task_form %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-3">
+    <%= button_tag t('backoffice.task_lists.form.add'), type: "button", class: "btn btn-primary", data: { action: "task-list#addTask" } %>
+  </div>
+
+  <div class="d-flex text-center mt-3">
+    <%= form.button :submit, t('backoffice.task_lists.form.save'), class: "btn btn-primary" %>
+    <%= link_to t('backoffice.task_lists.form.back'), backoffice_task_lists_path, class: "btn btn-info" %>
+  </div>
+
+  <template data-task-list-target="template">
+    <%= form.simple_fields_for :tasks, Task.new, child_index: "NEW_RECORD" do |task_form| %>
+      <%= render 'task_fields', form: task_form %>
+    <% end %>
+  </template>
+<% end %>

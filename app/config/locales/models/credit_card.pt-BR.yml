@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        credit_card:
+          attributes:
+            card_number:
+              blank: "Número do cartão não pode ficar em branco"
+    models:
+      credit_card:
+        one: "Cartão de Crédito"
+        other: "Cartões de Crédito"
+    attributes:
+      credit_card:
+        card_number: "Número do cartão"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"

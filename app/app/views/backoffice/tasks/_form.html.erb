@@ -1,0 +1,36 @@
+<%= form_with(model: [@task_list, @task], url: @task.new_record? ? backoffice_task_list_tasks_path(@task_list) : backoffice_task_list_task_path(@task_list, @task), local: true, multipart: true) do |form| %>
+  <div class="form-group <%= 'has-error' if @task.errors[:name].present? %>">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+    <% if @task.errors[:name].present? %>
+      <span class="help-block"><%= @task.errors[:name].first %></span>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status %>
+    <div class="form-check">
+      <%= form.radio_button :status, 'pending', class: 'form-check-input' %>
+      <%= form.label :status_pending, t('backoffice.tasks.form.pending'), class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= form.radio_button :status, 'completed', class: 'form-check-input' %>
+      <%= form.label :status_completed, t('backoffice.tasks.form.completed'), class: 'form-check-label' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :files %>
+    <%= form.file_field :files, multiple: true, accept: "image/*,application/pdf", class: "form-control" %>
+    <% if @task.errors[:files].present? %>
+      <span class="help-block"><%= @task.errors[:files].first %></span>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t('backoffice.tasks.form.back'), backoffice_task_list_path(@task_list), class: "btn btn-info mt-3" %>
+  </div>
+<% end %>
+<br/>
+<%= render partial: 'carousel_task_files' %>
