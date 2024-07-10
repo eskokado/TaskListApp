@@ -79,7 +79,7 @@ module Backoffice
 
     def authorize_user!
       unless @task_list.user == current_user
-        redirect_to backoffice_task_list_path(@task_list), alert: t('.alert.access.denied')
+        redirect_to backoffice_task_list_path(@task_list), alert: t('backoffice.tasks.alert.access.denied')
       end
     end
   end

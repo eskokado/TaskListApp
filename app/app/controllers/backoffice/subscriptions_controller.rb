@@ -14,7 +14,7 @@ module Backoffice
     def update
       if @subscription.update(subscription_params)
         handle_credit_card_attributes
-        redirect_to edit_backoffice_subscription_path, notice: 'Subscription was successfully updated.'
+        redirect_to edit_backoffice_subscription_path, notice: t('.update')
       else
         render :edit
       end
