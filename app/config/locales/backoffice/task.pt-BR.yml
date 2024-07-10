@@ -21,3 +21,6 @@ pt-BR:
           details:
             name: "Entre com o nome da tarefa"
             status: "Selecione um status"
+        confirm:
+          file:
+            remove: "Tem certeza que deseja remover o arquivo?"

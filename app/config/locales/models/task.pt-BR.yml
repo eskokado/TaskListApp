@@ -16,5 +16,6 @@ pt-BR:
       task:
         name: "Nome"
         status: "Situação"
+        files: "Arquivos"
         created_at: "Criado em"
         updated_at: "Atualizado em"
