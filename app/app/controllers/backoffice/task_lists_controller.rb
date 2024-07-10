@@ -4,12 +4,8 @@ module Backoffice
     before_action :set_task_list, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
 
-    set_current_tenant_through_filter
-
-    before_action :set_tenant
-
     def index
-      @task_lists = TaskList.includes(:tasks).page(params[:page]).per(2)
+      @task_lists = TaskList.includes(:tasks).shared_with_user(current_user).page(params[:page]).per(2)
     end
 
     def show
@@ -24,7 +20,7 @@ module Backoffice
       @task_list = TaskList.new(task_list_params)
       @task_list.user = current_user
       if @task_list.save
-        redirect_to backoffice_task_list_path(@task_list), notice: 'Task list was successfully created.'
+        redirect_to backoffice_task_list_path(@task_list), notice: t('.create')
       else
         render :new
       end
@@ -34,16 +30,26 @@ module Backoffice
     end
 
     def update
+      unless @task_list.user == current_user
+        redirect_to backoffice_task_lists_path, alert: t('.alert.access.danied')
+        return
+      end
+
       if @task_list.update(task_list_params)
-        redirect_to backoffice_task_list_path(@task_list), notice: 'Task list was successfully updated.'
+        redirect_to backoffice_task_list_path(@task_list), notice: t('.update')
       else
         render :edit
       end
     end
 
     def destroy
+      unless @task_list.user == current_user
+        redirect_to backoffice_task_lists_path, alert: t('.alert.access.danied')
+        return
+      end
+
       @task_list.destroy
-      redirect_to backoffice_task_lists_url, notice: 'Task list was successfully destroyed.'
+      redirect_to backoffice_task_lists_url, notice: t('.destroy')
     end
 
     private
@@ -53,11 +59,7 @@ module Backoffice
     end
 
     def task_list_params
-      params.require(:task_list).permit(:name, tasks_attributes: [:id, :name, :status, :_destroy])
-    end
-
-    def set_tenant
-      set_current_tenant(current_user)
+      params.require(:task_list).permit(:name, :shared, tasks_attributes: [:id, :name, :status, :_destroy])
     end
   end
 end
