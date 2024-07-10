@@ -3,6 +3,7 @@ module Backoffice
     protect_from_forgery except: :update
     before_action :set_task_list, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!
+    before_action :authorize_user!, only: [:edit, :update, :destroy]
 
     def index
       @task_lists = TaskList.includes(:tasks).shared_with_user(current_user).page(params[:page]).per(2)
@@ -30,11 +31,6 @@ module Backoffice
     end
 
     def update
-      unless @task_list.user == current_user
-        redirect_to backoffice_task_lists_path, alert: t('.alert.access.danied')
-        return
-      end
-
       if @task_list.update(task_list_params)
         redirect_to backoffice_task_list_path(@task_list), notice: t('.update')
       else
@@ -43,11 +39,6 @@ module Backoffice
     end
 
     def destroy
-      unless @task_list.user == current_user
-        redirect_to backoffice_task_lists_path, alert: t('.alert.access.danied')
-        return
-      end
-
       @task_list.destroy
       redirect_to backoffice_task_lists_url, notice: t('.destroy')
     end
@@ -60,6 +51,12 @@ module Backoffice
 
     def task_list_params
       params.require(:task_list).permit(:name, :shared, tasks_attributes: [:id, :name, :status, :_destroy])
+    end
+
+    def authorize_user!
+      unless @task_list.user == current_user
+        redirect_to backoffice_task_lists_path, alert: t('.alert.access.denied')
+      end
     end
   end
 end
