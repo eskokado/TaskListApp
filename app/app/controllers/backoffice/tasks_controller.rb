@@ -46,7 +46,7 @@ module Backoffice
       if @task.update(status: new_status)
         redirect_to backoffice_task_list_path(@task_list), notice: t('.status_updated')
       else
-        redirect_to backoffice_task_list_path(@task_list), alert: t('.status_failed')
+        redirect_to backoffice_task_list_path(@task_list), alert: t('backoffice.tasks.status_failed')
       end
     end
 
